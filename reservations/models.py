@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models.deletion import CASCADE
 from core import models as core_models
 
 
@@ -22,8 +21,8 @@ class Reservation(core_models.TimeStanpedModel):
     )
     check_in = models.DateField()
     check_out = models.DateField()
-    guest = models.ForeignKey("users.User", on_delete=CASCADE)
-    room = models.ForeignKey("rooms.Room", on_delete=CASCADE)
+    guest = models.ForeignKey("users.User", on_delete=models.CASCADE)
+    room = models.ForeignKey("rooms.Room", on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.room} - {self.check_in}"
