@@ -8,7 +8,7 @@ class List(core_models.TimeStanpedModel):
 
     name = models.CharField(max_length=80)
     user = models.ForeignKey(
-        "users.User", related_name="Lists", on_delete=models.CASCADE
+        "users.User", related_name="lists", on_delete=models.CASCADE
     )
     rooms = models.ManyToManyField("rooms.Room", blank=True)
 
