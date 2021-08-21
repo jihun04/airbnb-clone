@@ -7,4 +7,4 @@ class ReviewAdmin(admin.ModelAdmin):
 
     """Review Admin Definition"""
 
-    pass
+    list_display = ("__str__", "user", "room", "rating_average")
