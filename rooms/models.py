@@ -99,6 +99,5 @@ class Room(core_models.TimeStanpedModel):
         all_reviews = self.reviews.all()
         total_avg = 0
         for review in all_reviews:
-            print(review.rating_average)
             total_avg += review.rating_average()
-        return total_avg / len(all_reviews)
+        return round(total_avg / len(all_reviews), 2)
