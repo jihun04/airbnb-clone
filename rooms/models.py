@@ -92,6 +92,9 @@ class Room(core_models.TimeStanpedModel):
     facilities = models.ManyToManyField("Facility", related_name="rooms", blank=True)
     house_rules = models.ManyToManyField("HouseRule", related_name="rooms", blank=True)
 
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+
     def __str__(self):
         return self.name
 
