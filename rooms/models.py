@@ -92,15 +92,17 @@ class Room(core_models.TimeStanpedModel):
     facilities = models.ManyToManyField("Facility", related_name="rooms", blank=True)
     house_rules = models.ManyToManyField("HouseRule", related_name="rooms", blank=True)
 
-    # def save(self, *args, **kwargs):
-    #     super().save(*args, **kwargs)
-
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        self.city = self.city.title()
+        super().save(*args, **kwargs)
+
     def total_rating(self):
         all_reviews = self.reviews.all()
-        total_avg = 0
-        for review in all_reviews:
-            total_avg += review.rating_average()
-        return round(total_avg / len(all_reviews), 2)
+        if all_reviews:
+            total_avg = 0
+            for review in all_reviews:
+                total_avg += review.rating_average()
+            return round(total_avg / len(all_reviews), 2)
